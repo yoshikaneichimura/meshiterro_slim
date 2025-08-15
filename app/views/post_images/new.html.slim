@@ -1,2 +1,10 @@
-h1 PostImages#new
-p Find me in app/views/post_images/new.html.slim
+h1 画像投稿フォーム
+= form_with model: @post_image do |f|
+  h4 画像
+  = f.file_field :image, accept: "image/*"
+  h4 ショップ名
+  = f.text_field :shop_name
+  h4 説明
+  = f.text_area :caption
+  br
+  = f.submit '投稿'
