@@ -15,5 +15,6 @@
       | ユーザーネーム：
       = post_image.user.name
     p
-    |
-    = link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id)
+      |
+      = link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id)
+  = paginate post_images
