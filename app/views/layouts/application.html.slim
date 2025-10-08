@@ -6,23 +6,44 @@ html
     meta[name="viewport" content="width=device-width,initial-scale=1"]
     = csrf_meta_tags
     = csp_meta_tag
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
     script src="https://kit.fontawesome.com/a5fc0fa3f9.js" crossorigin="anonymous"
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    header
-      - if user_signed_in?
-        li
-          = link_to '投稿フォーム', new_post_image_path
-        li
-          = link_to 'マイページ' , user_path(current_user.id)
-        li
-          = link_to "ログアウト", destroy_user_session_path, method: :delete
-      - else
-        li
-          = link_to "新規登録", new_user_registration_path
-        li
-          = link_to "ログイン", new_user_session_path
 
-    h1.text-danger bootstrap
+  body.d-flexflex-columnvh-100
+    header.shadow-sm
+      nav.navbar.navbar-expand-lg.navbar-light
+        div.container
+          a.navbar-brand.p-3 href="/"
+          = image_tag('logo.png')
+          button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controrls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+            span.navbar-toggler-icon
+          div.collapse.navbar-collapse#navbarNavDropdown
+            ul.navbar-nav.ml-auto
+            - if user_signed_in?
+              li.nav-item
+                = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark'
+              li.nav-item
+                = link_to '投稿フォーム', new_post_image_path, class: 'nav-link text-dark'
+              li.nav-item
+                = link_to 'マイページ' , user_path(current_user.id), class: 'nav-link text-dark'
+            - else
+              li.nav-item
+                = link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark'
+              li.nav-item
+                = link_to "ログイン", new_user_session_path, class: 'nav-link text-dark'
+    main
     = yield
+    footer
+      div
+        div
+          div
+            p
+          div
+            h6 Link
+            ul
+              li
+                a
+              li
+                a
