@@ -33,17 +33,22 @@ html
                 = link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark'
               li.nav-item
                 = link_to "ログイン", new_user_session_path, class: 'nav-link text-dark'
-    main
+    main.mb-auto
     = yield
-    footer
-      div
-        div
-          div
+    footer.bg-dark.text-white.pt-5.pb-4
+      div.container
+        div.row.no-gutters
+          div.col-md-4
             p
-          div
-            h6 Link
-            ul
+              | 善良な市民同士て無差別に食欲を煽るSNS
+              = image_tag('logo-white.png')
+          div.col-md-8
+            h6.text-white.mt-2.mb-3
+            Link
+            ul.p-0.list-unstyle
               li
-                a
+                a href="" title="About"class="text-white"
+                会社概要
               li
-                a
+                a href="" title="License infomartions".class="text-white-50"
+                プライバシーポリシー
