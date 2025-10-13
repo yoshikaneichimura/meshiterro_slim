@@ -15,8 +15,7 @@ html
     header.shadow-sm
       nav.navbar.navbar-expand-lg.navbar-light
         div.container
-          a.navbar-brand.p-3 href="/"
-          = image_tag('logo.png')
+          a.navbar-brand.p-3 href="/" = image_tag('logo.png')
           button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controrls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
             span.navbar-toggler-icon
           div.collapse.navbar-collapse#navbarNavDropdown
@@ -27,7 +26,7 @@ html
               li.nav-item
                 = link_to '投稿フォーム', new_post_image_path, class: 'nav-link text-dark'
               li.nav-item
-                = link_to 'マイページ' , user_path(current_user.id), class: 'nav-link text-dark'
+                = link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark'
             - else
               li.nav-item
                 = link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark'
@@ -45,10 +44,12 @@ html
           div.col-md-8
             h6.text-white.mt-2.mb-3
             Link
-            ul.p-0.list-unstyle
+            ul.p-0.list-unstyled
               li
-                a href="" title="About"class="text-white"
-                会社概要
+                a href="" title="About" class="text-white"
+                |
+                  会社概要
               li
-                a href="" title="License infomartions".class="text-white-50"
-                プライバシーポリシー
+                a href="" title="License infomartions" class="text-white-50"
+                |
+                  プライバシーポリシー
