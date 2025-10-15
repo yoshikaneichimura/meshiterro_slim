@@ -1,20 +1,30 @@
-- post_images.each do | post_image|
-  div
-    = link_to post_image_path(post_image.id) do
-      = image_tag post_image.get_image
-    p
-      | 投稿ユーザー画像：
-      = image_tag post_image.user.get_profile_image(100,100)
-    p
-      | ショップ名：
-      = post_image.shop_name
-    p
-      | 説明：
-      = post_image.caption
-    p
-      | ユーザーネーム：
-      = post_image.user.name
-    p
-      |
-      = link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id)
-  = paginate post_images
+div.card-list-container.py-5
+  - post_images.each do | post_image|
+    div.card.w-50.mx-auto.mt-4.shadow-lg
+      = link_to post_image_path(post_image.id) do
+        = image_tag post_image.get_image
+      div.card-body
+        div.row
+          div.col-2
+            = image_tag post_image.user.get_profile_image(100,100), class: "mt-3 rounded-circle"
+          div.col-10
+            p.card-title
+              = link_to post_image_path(post_image.id), class: "text-dark" do
+                strong
+                  i.far.fa-flag
+                  span 
+                  = post_image.shop_name
+            p.card-text
+              |
+                説明：
+              = post_image.caption
+            span
+              i.fas.fa-user
+              |
+                By
+              = post_image.user.name
+              |
+                ｜
+            span
+              = link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "text-dark"
+    = paginate post_images
