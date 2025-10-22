@@ -2,7 +2,7 @@ div.card-list-container.py-5
   - post_images.each do | post_image|
     div.card.w-50.mx-auto.mt-4.shadow-lg
       = link_to post_image_path(post_image.id) do
-        = image_tag post_image.get_image
+        = image_tag post_image.get_image, class: "card-img-top"
       div.card-body
         div.row
           div.col-2
@@ -12,19 +12,16 @@ div.card-list-container.py-5
               = link_to post_image_path(post_image.id), class: "text-dark" do
                 strong
                   i.far.fa-flag
-                  span 
+                  span
                   = post_image.shop_name
             p.card-text
-              |
-                説明：
+              | 説明：
               = post_image.caption
             span
               i.fas.fa-user
-              |
-                By
+              | By
               = post_image.user.name
-              |
-                ｜
+              | ｜
             span
               = link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "text-dark"
-    = paginate post_images
+  = paginate post_images

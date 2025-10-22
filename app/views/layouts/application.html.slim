@@ -11,7 +11,7 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body.d-flexflex-columnvh-100
+  body.d-flex.flex-column.vh-100
     header.shadow-sm
       nav.navbar.navbar-expand-lg.navbar-light
         div.container
@@ -20,36 +20,32 @@ html
             span.navbar-toggler-icon
           div.collapse.navbar-collapse#navbarNavDropdown
             ul.navbar-nav.ml-auto
-            - if user_signed_in?
-              li.nav-item
-                = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark'
-              li.nav-item
-                = link_to '投稿フォーム', new_post_image_path, class: 'nav-link text-dark'
-              li.nav-item
-                = link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark'
-            - else
-              li.nav-item
-                = link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark'
-              li.nav-item
-                = link_to "ログイン", new_user_session_path, class: 'nav-link text-dark'
+              - if user_signed_in?
+                li.nav-item
+                  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark'
+                li.nav-item
+                  = link_to '投稿フォーム', new_post_image_path, class: 'nav-link text-dark'
+                li.nav-item
+                  = link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark'
+              - else
+                li.nav-item
+                  = link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark'
+                li.nav-item
+                  = link_to "ログイン", new_user_session_path, class: 'nav-link text-dark'
     main.mb-auto
-    = yield
+      = yield
     footer.bg-dark.text-white.pt-5.pb-4
       div.container
         div.row.no-gutters
           div.col-md-4
-            p
-              | 善良な市民同士て無差別に食欲を煽るSNS
-              = image_tag('logo-white.png')
+            p 
+            | 善良な市民同士で無差別に食欲を煽るSNS
+            = image_tag('logo-white.png')
           div.col-md-8
-            h6.text-white.mt-2.mb-3
-            Link
+            h6.mt-2.mb-3
+            | Link
             ul.p-0.list-unstyled
               li
-                a href="" title="About" class="text-white"
-                |
-                  会社概要
+                a.text-white-50 href="" title="About" 会社概要
               li
-                a href="" title="License infomartions" class="text-white-50"
-                |
-                  プライバシーポリシー
+                a.text-white-50 href="" title="License infomartions" プライバシーポリシー
