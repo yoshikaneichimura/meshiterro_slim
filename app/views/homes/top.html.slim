@@ -1,2 +1,19 @@
-h1 Homes#top
-p Find me in app/views/homes/top.html.slim
+div.col-md-6.mx-auto.mt-5
+  h1
+    | welcome to
+    strong
+      |   Meshiterro
+    |   !!
+  p
+    | In
+    strong
+      |   Meshiterro
+    | ,
+
+  p SNS community that indiscriminately stimulates the appetite of sensible citizens.
+  div.row
+    p.ml-3
+      = link_to "Log in", new_user_session_path, class: "btn btn-info"
+    p.ml-3
+      = link_to "Sign up", new_user_registration_path, class: "btn btn-success"
+
