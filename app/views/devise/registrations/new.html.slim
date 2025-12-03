@@ -1,28 +1,45 @@
-h2
-  | Sign up
-= form_with model: @user, url: user_registration_path do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :name
-    br
-    = f.text_field :name
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+div.container
+  div.row.no-gutters
+    div.col-md-5.col-sm-10.mx-2.mx-sm-auto.text-center.shadow-lg.rounded.px-0.my-5
+      h5.text-dark.bg-light.py-4.mb-0 新規登録
+      div.form-body.p-4
+        div.mx-auto.text-center
+          p
+            | 名前・メールアドレス・パスワードを入力してください。
+
+        - if @user.errors.any?
+          ul.alert.alert-danger.text-left role="alert"
+            h6.alert-heading
+              = @user.errors.count
+              | 件のエラーが発生しました
+            - @user.errors.full_messages.each do |message|
+              li
+                = message
+
+        = form_with model: @user, url: user_registration_path do |f|
+        
+          div.input-group.mb-3
+            div.input-group-prepend
+              span.input-group-text aria-hidden="true"
+                i.fa-solid.fa-user
+            = f.text_field :name, autofoucus: true, placeholder: "名前", class: "form-control"
+            
+          div.input-group.mb-3
+            div.input-group-prepend
+              span.input-group-text aria-hidden="true"
+                i.fa-solid.fa-envelope
+            = f.email_field :email, autoforcus: true, placeholder: "メールアドレス", class: "form-control"
+            
+          div.input-group.mb-3
+            div.input-group-prepend
+              span.input-group-text aria-hidden="true"
+                i.fa-solid.fa-lock
+            = f.password_field :password, placeholder: "パスワード(#{@minimum_password_length}文字以上)", class: "form-control"
+            
+          div.input-group.mb-3
+            div.input-group-prepend
+              span.input-group-text aria-hidden="true"
+                i.fa-solid.fa-circle-check
+            = f.password_field :password_confirmation, placeholder: "パスワード確認", class: "form-control"
+            
+          = f.submit "Sign up", class: "btn btn-block btn-info mt-5"
