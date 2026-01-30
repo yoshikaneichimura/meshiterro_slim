@@ -13,14 +13,14 @@ div.card-list-container.py-5
                 strong
                   i.far.fa-flag
                   span
-                  = post_image.shop_name
+                    =< post_image.shop_name
             p.card-text
               | 説明：
               = post_image.caption
             span
               i.fas.fa-user
-              | By
-              = post_image.user.name
+              '  By
+              =< post_image.user.name
               | ｜
             span
               = link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class: "text-dark"
