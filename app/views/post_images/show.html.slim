@@ -13,43 +13,42 @@ div.post-detail.py-5.bg-light
                   i.fa-regular.fa-flag
                   span
                     |
-                    = @post_image.shop_name
+                    =< @post_image.shop_name
             p.card-title
               |説明：
               = @post_image.caption
             span
               i.fa-solid.fa-user
               |  By
-              = @post_image.user.name
-              |
+              =<> @post_image.user.name
+              '
                 |
             span
               i.fa-solid.fa-calendar-days
-              |
-              = @post_image.created_at.strftime('%Y/%m/%d')
-              |
+              =<> @post_image.created_at.strftime('%Y/%m/%d')
+              '
                 |
             span
               i.fa-solid.fa-comment
-              = link_to "#{@post_image.post_comments.count}", post_image_path(@post_image.id), class: "text-dark"
-              |
+              =<> link_to "#{@post_image.post_comments.count}", post_image_path(@post_image.id), class: "text-dark"
+              '
                 |
             - if @post_image.favorited_by?(current_user)
               span
-                = link_to post_image_favorite_path(@post_image), class:"text-dark", method: :delete do
+                =< link_to post_image_favorite_path(@post_image), class:"text-dark", method: :delete do
                   i.fa-solid.fa-heart
-                  = @post_image.favorites.count
+                  => @post_image.favorites.count
             - else
               span
-                = link_to post_image_favorite_path(@post_image), class:"text-dark", method: :post do
+                =< link_to post_image_favorite_path(@post_image), class:"text-dark", method: :post do
                   i.fa-solid.fa-heart
-                  = @post_image.favorites.count
+                  => @post_image.favorites.count
 
             - if @post_image.user == current_user
               span
                 |
                   |
-              = link_to "削除", post_image_path(@post_image), method: :delete
+              =< link_to "削除", post_image_path(@post_image), method: :delete
         hr
         div.comments.card-text
           h4.mt-3
@@ -60,7 +59,7 @@ div.post-detail.py-5.bg-light
               = image_tag post_comment.user.get_profile_image(100,100)
               div.media-body.ml-4.p-3
                 p
-                  = post_comment.created_at.strftime( '%Y/%m/%d' )
+                  => post_comment.created_at.strftime( '%Y/%m/%d' )
                   = post_comment.comment
                 p
                   = post_comment.comment
