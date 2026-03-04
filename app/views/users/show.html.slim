@@ -1,7 +1,7 @@
-h3 = @user.name
-= image_tag @user.get_profile_image(100,100)
-if @user == current_user
-  p
-    = link_to "プロフィール編集",edit_user_path(@user.id)
-
-= render 'post_images/list', post_images: @post_images
+div.container.w-75.d-flex.mx-auto.justify-content-around.align-items-center.border-bottom.py-5
+  = image_tag @user.get_profile_image(100,100)
+  h5.display-4 = @user.name
+  if @user == current_user
+    div.mt-auto
+      p
+        = link_to "プロフィール編集",edit_user_path(@user.id), class:"text-dark"
